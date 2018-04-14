@@ -233,15 +233,19 @@ class Buttons extends React.Component {
             <span />
           </Tooltip>
         </span>
-        <span className="CommentFooter__bullet" />
-        <span className="CommentFooter__payout">
-          <Tooltip title={<PayoutDetail post={comment} />}>
-            <USDDisplay
-              value={payout.cashoutInTime ? payout.potentialPayout : payout.pastPayouts}
-            />
-            <span />
-          </Tooltip>
-        </span>
+        {totalPayout > 0.0 && (
+          <span>
+            <span className="CommentFooter__bullet" />
+            <span className="CommentFooter__payout">
+              <Tooltip title={<PayoutDetail post={comment} />}>
+                <USDDisplay
+                  value={payout.cashoutInTime ? payout.potentialPayout : payout.pastPayouts}
+                />
+                <span />
+              </Tooltip>
+            </span>
+          </span>
+        )}
         {user.name && (
           <span>
             <span className="CommentFooter__bullet" />
