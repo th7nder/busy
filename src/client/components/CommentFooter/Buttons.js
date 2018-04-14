@@ -174,28 +174,25 @@ class Buttons extends React.Component {
             {pendingLike ? <Icon type="loading" /> : <i className="iconfont icon-praise_fill" />}
           </a>
         </Tooltip>
-        <span
-          className={classNames('CommentFooter__count', {
-            'CommentFooter__count--clickable': upVotes.length > 0 || downVotes.length > 0,
-          })}
-          role="presentation"
-          onClick={this.handleShowReactions}
-        >
-          <Tooltip
-            title={
-              <div>
-                {upVotesPreview}
-                {upVotesMore}
-                {upVotesPreview.length === 0 && (
-                  <FormattedMessage id="no_likes" defaultMessage="No likes yet" />
-                )}
-              </div>
-            }
+        {upVotes.length > 0 && (
+          <span
+            className="CommentFooter_count CommentFooter__count--clickable"
+            role="presentation"
+            onClick={this.handleShowReactions}
           >
-            <FormattedNumber value={upVotes.length} />
-            <span />
-          </Tooltip>
-        </span>
+            <Tooltip
+              title={
+                <div>
+                  {upVotesPreview}
+                  {upVotesMore}
+                </div>
+              }
+            >
+              <FormattedNumber value={upVotes.length} />
+              <span />
+            </Tooltip>
+          </span>
+        )}
         <Tooltip title={intl.formatMessage({ id: 'dislike', defaultMessage: 'Dislike' })}>
           <a
             role="presentation"
@@ -211,28 +208,25 @@ class Buttons extends React.Component {
             )}
           </a>
         </Tooltip>
-        <span
-          className={classNames('CommentFooter__count', {
-            'CommentFooter__count--clickable': upVotes.length > 0 || downVotes.length > 0,
-          })}
-          role="presentation"
-          onClick={this.handleShowReactions}
-        >
-          <Tooltip
-            title={
-              <div>
-                {downVotesPreview}
-                {downVotesMore}
-                {downVotes.length === 0 && (
-                  <FormattedMessage id="no_dislikes" defaultMessage="No dislikes" />
-                )}
-              </div>
-            }
+        {downVotes.length > 0 && (
+          <span
+            className="CommentFooter_count CommentFooter__count--clickable"
+            role="presentation"
+            onClick={this.handleShowReactions}
           >
-            <FormattedNumber value={downVotes.length} />
-            <span />
-          </Tooltip>
-        </span>
+            <Tooltip
+              title={
+                <div>
+                  {downVotesPreview}
+                  {downVotesMore}
+                </div>
+              }
+            >
+              <FormattedNumber value={downVotes.length} />
+              <span />
+            </Tooltip>
+          </span>
+        )}
         {totalPayout > 0.0 && (
           <span>
             <span className="CommentFooter__bullet" />
